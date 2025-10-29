@@ -1,0 +1,15 @@
+# checker.py - EU AI Act Compliance Checker for Image Models
+
+def check_compliance(model_desc):
+    checks = {
+        'transparency': 'AI-generated' in model_desc or 'watermark' in model_desc,
+        'copyright': 'EU-compliant data' in model_desc or 'opt-outs respected' in model_desc,
+        'bans': 'no facial recognition' in model_desc and 'no emotion inference' in model_desc,
+        'gpai': 'data summary provided' in model_desc and 'systemic risk evaluated' in model_desc
+    }
+    return {k: 'PASS' if v else 'FAIL' for k, v in checks.items()}
+
+# Example usage
+desc = input("Enter model description: ")
+result = check_compliance(desc.lower())
+print(result)
